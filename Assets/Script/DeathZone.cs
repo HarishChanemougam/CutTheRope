@@ -5,6 +5,7 @@ using UnityEngine;
 public class DeathZone : MonoBehaviour
 {
     [SerializeField] GameOver _gameOver;
+    [SerializeField] Animator _animator;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.attachedRigidbody.gameObject.tag == "candy")
@@ -12,6 +13,8 @@ public class DeathZone : MonoBehaviour
             Debug.Log("End");
             Destroy(collision.attachedRigidbody.gameObject);
             _gameOver.EndGame();
+           _animator.SetTrigger("CloseScreen");
+          
         }
     }
 

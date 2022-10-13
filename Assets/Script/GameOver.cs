@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
     [SerializeField] float _stop;
+    
 
     public void EndGame()
     {
@@ -16,6 +17,7 @@ public class GameOver : MonoBehaviour
     {
         yield return new WaitForSeconds(_stop);
 
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0);       
     }
+
 }
