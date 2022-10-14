@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class CandyDetector : MonoBehaviour
 {
-    [SerializeField] Animator _animator;
+     
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.attachedRigidbody.gameObject.tag =="candy")
@@ -12,7 +13,7 @@ public class CandyDetector : MonoBehaviour
             Debug.Log("coucou");
             Destroy(collision.attachedRigidbody.gameObject);
 
-            _animator.SetTrigger("CloseScreen");
+            
         }
     }
 
