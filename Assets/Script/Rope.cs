@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 using UnityEngine.InputSystem;
-
+using System;
 
 public class Rope : MonoBehaviour
 {
@@ -10,18 +10,20 @@ public class Rope : MonoBehaviour
     [SerializeField] private int _ropeNumbers;
     [SerializeField] private Vector3 _ropeOffset;
     [SerializeField] private Rigidbody2D _candy;
+    [SerializeField] LineRenderer _lineRenderer;
+    [SerializeField] Transform[] _points;
 
     bool _ropeCut;
     bool _isRopeCut;
 
-    LineRenderer _lineRenderer;
     private HingeJoint2D _hook;
     private List<GameObject> _ropePrefab = new List<GameObject>();
 
 
     private void Awake()
     {
-        _hook = GetComponent<HingeJoint2D>();       
+        _hook = GetComponent<HingeJoint2D>();
+        _lineRenderer = GetComponent<LineRenderer>();
     }
 
     private void Start()
@@ -37,7 +39,7 @@ public class Rope : MonoBehaviour
 
             else
             {
-                _ropePrefab[_ropePrefab.Count - 1].GetComponent<HingeJoint2D>().connectedBody = currentRope.GetComponent<Rigidbody2D>();
+                _ropePrefab[i - 1].GetComponent<HingeJoint2D>().connectedBody = currentRope.GetComponent<Rigidbody2D>();
             }
 
             if (i == _ropeNumbers - 1)
@@ -62,7 +64,7 @@ public class Rope : MonoBehaviour
         {
             if (_ropePrefab[i] != null && _ropePrefab[i].activeSelf)
             {
-                /*_lineRenderer.SetPosition(i+1, _ropePrefab[i], transform.position);*/
+                _lineRenderer.SetPosition(i + 1, _ropePrefab[i].transform.position);
             }
 
             else
@@ -87,4 +89,8 @@ public class Rope : MonoBehaviour
         _isRopeCut = true;
     }
 
+    internal void SetUpLine(Transform[] points)
+    {
+        throw new NotImplementedException();
+    }
 }

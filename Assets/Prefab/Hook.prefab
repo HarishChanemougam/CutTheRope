@@ -96,6 +96,8 @@ MonoBehaviour:
   _ropeNumbers: 0
   _ropeOffset: {x: 0, y: 0, z: 0}
   _candy: {fileID: 0}
+  _lineRenderer: {fileID: 0}
+  _points: []
 --- !u!1 &5345284189288467477
 GameObject:
   m_ObjectHideFlags: 0
